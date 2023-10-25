@@ -9,12 +9,11 @@ const cors = require('cors');
 app.use(cors());
 
 const PORT = process.env.PORT;
-// const db = process.env.DATABASE_ADDRESS;
+const db = process.env.DATABASE_URL;
+mongoose.set("strictQuery", false);
+mongoose.connect(db);
 
-// mongoose.set("strictQuery", false);
-// mongoose.connect(db);
-
-// const urlEncoded = bodyParser.urlencoded({ extended: true });
+const urlEncoded = bodyParser.urlencoded({ extended: true });
 
 app.use(router);
 
