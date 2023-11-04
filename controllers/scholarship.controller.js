@@ -4,7 +4,7 @@ class ScholarshipController {
     async getAllScholarships(req, res) {
         try {
             const page = req.query.page || 1;
-            const perPage = req.query.perPage || 10;
+            const perPage = req.query.perPage || 9;
             const filters = {
                 title: req.query.title,
                 fundingType: req.query.fundingType,
