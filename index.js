@@ -20,6 +20,10 @@ database.once('connected',()=>{
   console.log('Database Connected');
 })
 
+app.use(cors({
+  origin: '*',
+  // allowHeaders: ['Content-Type', 'Authorization']
+}));
 app.get("/",(req,res)=>{
   res.send('hi');
 })
