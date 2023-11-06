@@ -9,6 +9,7 @@ const scholarRouter = require("./scholarship.routes");
 router.group("/api", route => {
     route.use("/user", userRouter);
     route.use("/article", articleRouter);
+    route.use("/article", articleRouterApiV1);
     route.use("/scholar", scholarRouter);
     route.use("/country", countryRouter);
 });
