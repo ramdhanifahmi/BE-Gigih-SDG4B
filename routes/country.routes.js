@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 require("express-group-routes");
 
 const jsonParser = bodyParser.json();
-const countryControllerV1 = require("../../../controllers/api/v1/country.api.controller");
+const countryControllerV1 = require("../controllers/country.controller");
 
 router.get("/all", jsonParser, countryControllerV1.getCountries);
 router.get("/:id", jsonParser, countryControllerV1.getOneCountry);

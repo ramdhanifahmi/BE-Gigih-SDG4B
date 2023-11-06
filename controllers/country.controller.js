@@ -1,5 +1,5 @@
-const destinationData = require("../../../dummyData/destinationData.json");
-const CountryModel = require("../../../models/countryModel");
+const destinationData = require("../dummyData/destinationData.json");
+const CountryModel = require("../models/countryModel");
 
 module.exports = {
     getCountries: async (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
                     message: 'Country not found'
                 })
             }
-            
+
             res.status(200).json({
                 msg: "OK",
                 data: country
@@ -39,7 +39,7 @@ module.exports = {
     createCountry: async (req, res) => {
         try {
             // const country = await CountryModel.insertMany([
-                
+
             // ]);
             const country = await CountryModel.create({
                 name: req.body.name,

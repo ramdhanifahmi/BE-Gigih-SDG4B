@@ -1,5 +1,5 @@
-const articleData = require("../../../dummyData/articleData.json");
-const ArticleModel = require("../../../models/articleModel");
+const articleData = require("../dummyData/articleData.json");
+const ArticleModel = require("../models/articleModel");
 
 module.exports = {
     getArticles: async (req, res) => {
@@ -27,7 +27,7 @@ module.exports = {
                     message: 'Article not found'
                 })
             }
-            
+
             res.status(200).json({
                 msg: "OK",
                 data: article
@@ -42,7 +42,7 @@ module.exports = {
     createArticle: async (req, res) => {
         try {
             // const article = await ArticleModel.insertMany([
-            //     
+            //
             // ]);
             const article = await ArticleModel.create({
                 title: req.body.title,
