@@ -7,11 +7,13 @@ module.exports = {
             const countries = await CountryModel.find();
 
             res.status(200).json({
-                msg: "OK",
+                message: "Success Retreaving Data",
                 data: countries
             })
         } catch (error) {
-            console.log(error);
+            res.status(500).json({
+                message: error.message
+            });
         }
     },
     getOneCountry: async (req, res) => {
@@ -26,21 +28,17 @@ module.exports = {
             }
             
             res.status(200).json({
-                msg: "OK",
+                message: "Success Retreaving Data",
                 data: country
             })
         } catch (error) {
-            console.log(error);
             res.status(500).json({
-                message: err.message
+                message: error.message
             });
         }
     },
     createCountry: async (req, res) => {
         try {
-            // const country = await CountryModel.insertMany([
-                
-            // ]);
             const country = await CountryModel.create({
                 name: req.body.name,
                 image: req.body.image
@@ -51,10 +49,9 @@ module.exports = {
                 data: country
             });
 
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
             res.status(500).json({
-                message: err.message
+                message: error.message
             });
         }
     }

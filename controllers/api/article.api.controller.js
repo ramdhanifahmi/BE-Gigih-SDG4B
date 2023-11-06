@@ -7,11 +7,10 @@ module.exports = {
             const articles = await ArticleModel.find();
 
             res.status(200).json({
-                msg: "OK",
+                message: "Success Retreaving Data",
                 data: articles
             })
         } catch (error) {
-            console.log(error);
             res.status(500).json({
                 message: error.message
             });
@@ -29,11 +28,10 @@ module.exports = {
             }
             
             res.status(200).json({
-                msg: "OK",
+                message: "Success Retreaving Data",
                 data: article
             })
         } catch (error) {
-            console.log(error);
             res.status(500).json({
                 message: error.message
             });
@@ -41,9 +39,6 @@ module.exports = {
     },
     createArticle: async (req, res) => {
         try {
-            // const article = await ArticleModel.insertMany([
-            //     
-            // ]);
             const article = await ArticleModel.create({
                 title: req.body.title,
                 synopsis: req.body.synopsis,
@@ -57,7 +52,6 @@ module.exports = {
             });
 
         } catch (error) {
-            console.log(error);
             res.status(500).json({
                 message: error.message
             });
