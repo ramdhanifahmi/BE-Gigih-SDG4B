@@ -1,5 +1,5 @@
-const destinationData = require("../../../dummyData/destinationData.json");
-const CountryModel = require("../../../models/countryModel");
+const destinationData = require("../../dummyData/destinationData.json");
+const CountryModel = require("../../models/countryModel");
 
 module.exports = {
     getCountries: async (req, res) => {

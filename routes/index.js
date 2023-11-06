@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const articleRouterApiV1 = require("./api/v1/article.api.routes");
-const countryRouterApiV1 = require("./api/v1/country.api.routes");
+const articleRouterApiV1 = require("./api/article.api.routes");
+const countryRouterApiV1 = require("./api/country.api.routes");
 const scholarRouter = require("./scholarship.routes");
 
 
