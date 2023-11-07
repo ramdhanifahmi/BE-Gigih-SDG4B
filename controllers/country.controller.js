@@ -1,5 +1,5 @@
-const destinationData = require("../../dummyData/destinationData.json");
-const CountryModel = require("../../models/countryModel");
+const destinationData = require("../dummyData/destinationData.json");
+const CountryModel = require("../models/country.model");
 
 module.exports = {
     getCountries: async (req, res) => {
@@ -26,7 +26,7 @@ module.exports = {
                     message: 'Country not found'
                 })
             }
-            
+
             res.status(200).json({
                 message: "Success Retreaving Data",
                 data: country

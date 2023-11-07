@@ -1,5 +1,5 @@
-const articleData = require("../../dummyData/articleData.json");
-const ArticleModel = require("../../models/articleModel");
+const articleData = require("../dummyData/articleData.json");
+const ArticleModel = require("../models/article.model");
 
 module.exports = {
     getArticles: async (req, res) => {
@@ -26,7 +26,7 @@ module.exports = {
                     message: 'Article not found'
                 })
             }
-            
+
             res.status(200).json({
                 message: "Success Retreaving Data",
                 data: article
