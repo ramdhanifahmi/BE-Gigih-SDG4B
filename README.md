@@ -112,9 +112,12 @@ This API endpoint is responsible for retrieving a list of scholarships with opti
 
 ```
 {
-  _id: ObjectId()
-  urlImageThumbnail: string
-  created_at: datetime(iso 8601)
+  _id: ObjectId(),
+  title: string,
+  synopsis: string,
+  image: string,
+  content: string,
+  created_at: datetime(iso 8601),
   updated_at: datetime(iso 8601)
 }
 ```
@@ -165,7 +168,7 @@ Returns article with specified id.
 ```
 {
     message: "Success retrieving data",
-    data:{<video_object>}
+    data:{<article_object>}
 }
 ```
 
@@ -183,7 +186,10 @@ Returns created article in the system.
 
   ```
   {
-      urlImageThumbnail: string
+    title: string,
+    synopsis: string,
+    image: string,
+    content: string
   }
   ```
 
@@ -211,7 +217,8 @@ Returns created article in the system.
 ```
 {
   _id: ObjectId()
-  urlImageThumbnail: string
+  name: string
+  image: string
   created_at: datetime(iso 8601)
   updated_at: datetime(iso 8601)
 }
@@ -281,7 +288,8 @@ Returns created country in the system.
 
   ```
   {
-      urlImageThumbnail: string
+      name: string,
+      image: string
   }
   ```
 
