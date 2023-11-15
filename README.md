@@ -59,14 +59,17 @@ The database for this API uses MongoDB as the backend database. It consists of t
 
 ## List API Request and Response
 The API provides the following endpoints:
-### Scholar List
-**GET /api/scholar**
-
+## **GET /api/scholar**
 This API endpoint is responsible for retrieving a list of scholarships with optional filtering and pagination.
 
 - **Query Params:** 
-  `videoId=[string]`
-  `title=[string]`
+  - `page=[number]` (opsional): Halaman yang diinginkan, default 1.
+  - `perPage=[number]` (opsional): Jumlah beasiswa per halaman, default 9.
+  - `title=[string]` (opsional): Judul beasiswa yang dicari.
+  - `fundingType=[string]` (opsional): Jenis pembiayaan beasiswa.
+  - `educationalLevel=[string]` (opsional): Tingkat pendidikan untuk beasiswa.
+  - `country=[string]` (opsional): Negara tujuan beasiswa.
+  - `sort=[string]` (opsional): Cara pengurutan beasiswa.
 
 
 - **Data Params**
@@ -80,47 +83,128 @@ This API endpoint is responsible for retrieving a list of scholarships with opti
   - **Content:**
     ```
     {
-      "products": [
+    "data": [
         {
-          "productId": "product1",
-          "linkProduct": "https://www.example.com/product1",
-          "title": "Sample Product 1",
-          "price": "Rp 280.999"
-        },
-        // More products...
-      ]
+            "_id": "654453894f7fbbcf5528936b",
+            "slug": "gates-cambridge-scholarships",
+            "educationalLevel": [
+                "PhD",
+                "MSc/MLitt",
+                "One-year postgraduate course"
+            ],
+            "country": [
+                "United Kingdom"
+            ],
+            "title": "Gates Cambridge Scholarships",
+            "fundingType": "Fully funded",
+            "registrationDate": "2023-09-01T00:00:00.000Z",
+            "deadlineDate": "2023-12-05T00:00:00.000Z",
+            "description": "Gates Cambridge Scholarships are prestigious international awards that provide full funding for outstanding students to pursue postgraduate studies at the University of Cambridge. The program emphasizes leadership, intellectual ability, and a commitment to improving the lives of others.",
+            "university": [
+                "University of Cambridge"
+            ],
+            "programs": [
+                "Any postgraduate program at the University of Cambridge"
+            ],
+            "benefit": [
+                "Full cost of study, maintenance allowance, and more"
+            ],
+            "requirement": [
+                "Be a citizen of any country outside the United Kingdom",
+                "Apply to the University of Cambridge and Gates Cambridge Scholarships simultaneously",
+                "Demonstrate a strong commitment to social service"
+            ],
+            "applicationProcess": [
+                "Submit your application for admission to the University of Cambridge and the Gates Cambridge Scholarship online"
+            ],
+            "sourceInformation": "https://www.gatescambridge.org/",
+            "__v": 0
+           }
+    ],
+    "pagination": {
+        "currentPage": 1,
+        "totalPages": 1
     }
     ```
 
-- **No Product Found Response**
+- **No Scholar Found Response**
   - **Code:** 200
   - **Content:**
     ```
     []
     ```
 
-- **Error Response**
-  - **Code:** 400
+- **Error Response:**
+  - **Code:** 500  
+    **Content:** `{ error: error.message }`
+
+## **GET /api/scholar/{slug}**
+This API endpoint is responsible for retrieving a scholarship data by slug.
+
+- **Query Params:**
+None
+
+
+- **Data Params**
+  - `slug=[slug]` (required) : value slug dari scholarship data yang diinginkan.
+
+
+- **Headers**
+  Content-Type: application/json
+
+- **Success Response**
+  - **Code:** 200
   - **Content:**
     ```
     {
-      "error": "videoId or title is required in query parameters"
+    "_id": "654453894f7fbbcf5528936b",
+    "slug": "gates-cambridge-scholarships",
+    "educationalLevel": [
+        "PhD",
+        "MSc/MLitt",
+        "One-year postgraduate course"
+    ],
+    "country": [
+        "United Kingdom"
+    ],
+    "title": "Gates Cambridge Scholarships",
+    "fundingType": "Fully funded",
+    "registrationDate": "2023-09-01T00:00:00.000Z",
+    "deadlineDate": "2023-12-05T00:00:00.000Z",
+    "description": "Gates Cambridge Scholarships are prestigious international awards that provide full funding for outstanding students to pursue postgraduate studies at the University of Cambridge. The program emphasizes leadership, intellectual ability, and a commitment to improving the lives of others.",
+    "university": [
+        "University of Cambridge"
+    ],
+    "programs": [
+        "Any postgraduate program at the University of Cambridge"
+    ],
+    "benefit": [
+        "Full cost of study, maintenance allowance, and more"
+    ],
+    "requirement": [
+        "Be a citizen of any country outside the United Kingdom",
+        "Apply to the University of Cambridge and Gates Cambridge Scholarships simultaneously",
+        "Demonstrate a strong commitment to social service"
+    ],
+    "applicationProcess": [
+        "Submit your application for admission to the University of Cambridge and the Gates Cambridge Scholarship online"
+    ],
+    "sourceInformation": "https://www.gatescambridge.org/",
+    "__v": 0
     }
     ```
 
-- Article object
+- **No Data Found Response**
+  - **Code:** 404
+  - **Content:**
+    ```
+    { error: scholarship not found}
+    ```
 
-```
-{
-  _id: ObjectId(),
-  title: string,
-  synopsis: string,
-  image: string,
-  content: string,
-  created_at: datetime(iso 8601),
-  updated_at: datetime(iso 8601)
-}
-```
+- **Error Response:**
+  - **Code:** 500  
+    **Content:** `{ error: error.message }`
+
 
 ## **GET api/article/all**
 
