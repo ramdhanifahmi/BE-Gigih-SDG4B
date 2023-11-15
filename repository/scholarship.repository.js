@@ -22,20 +22,23 @@ class ScholarshipRepository {
         }
 
         const sortOptions = {};
+        const currentDate = new Date();
 
         if (sort === 'registrationDateClosest') {
             sortOptions.registrationDate = 1;
+            query.registrationDate = { $gte: currentDate };
+
         } else if (sort === 'deadlineDateClosest') {
             sortOptions.deadlineDate = 1;
+            query.deadlineDate = { $gte: currentDate };
+
         } else if (sort === 'deadlineDateFurthest') {
             sortOptions.deadlineDate = -1;
-        }
+            query.deadlineDate = { $gte: currentDate };
 
-        const currentDate = new Date();
-        query.$or = [
-            { registrationDate: { $gte: currentDate } },
-            { deadlineDate: { $gte: currentDate } }
-        ];
+        } else {
+            sortOptions.updatedAt = -1; // Default to sorting by updatedAt in descending order (newest first)
+        }
 
         try {
             const totalCount = await Scholarship.countDocuments(query);

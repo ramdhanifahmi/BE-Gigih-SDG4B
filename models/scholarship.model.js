@@ -33,7 +33,11 @@ const scholarshipSchema = new mongoose.Schema({
   requirement: [String],
   applicationProcess: [String],
   sourceInformation: String,
-});
+},
+    {
+      timestamps: true
+    }
+);
 scholarshipSchema.pre('save', function (next) {
   this.slug = slugify(this.title, { lower: true, strict: true });
   next();
