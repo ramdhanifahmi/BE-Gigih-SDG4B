@@ -58,7 +58,9 @@ The database for this API uses MongoDB as the backend database. It consists of t
 ```
 
 ## List API Request and Response
+The postman collection for the API can see on this link https://bit.ly/file-collection-api-sdg4b. If you have postman account, you can also check the postman collection in this link https://bit.ly/postman-api-sdg-4b. 
 The API provides the following endpoints:
+
 ## **GET /api/scholar**
 This API endpoint is responsible for retrieving a list of scholarships with optional filtering and pagination.
 
